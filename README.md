@@ -25,6 +25,7 @@ This repository has been tested on both **Linux** and **Windows** operating syst
 * Numpy (version >= 1.26.4)
 * Matplotlib (version >=3.9.1)
 * PyTorch (version >= 2.3.0)
+* torchdata (version >=0.8.0)
 * RDKit (version >= 2024)
 * DGL (version >= 2.2.0)
 * DGLLife (version >= 0.3.2)
