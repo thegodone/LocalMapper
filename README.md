@@ -21,18 +21,20 @@ Shuan Chen (shuan.micc@gmail.com)<br>
 This repository has been tested on both **Linux** and **Windows** operating systems.
 
 ## Python Dependencies
-* Python (version >= 3.6)
-* Numpy (version >= 1.16.4)
-* Matplotlib (version >=3.3.4)
-* PyTorch (version >= 1.0.0)
-* RDKit (version >= 2019)
-* DGL (version >= 0.5.2)
-* DGLLife (version >= 0.2.6)
-
+* Python (version >= 3.9.)
+* Numpy (version >= 1.26.4)
+* Matplotlib (version >=3.9.1)
+* PyTorch (version >= 2.3.0)
+* RDKit (version >= 2024)
+* DGL (version >= 2.2.0)
+* DGLLife (version >= 0.3.2)
+* pydantic (version >=2.8.2)
+* scikit-learn (version >=1.5.1)
+  
 ## Installation Guide
 ### From pip
 ```
-conda create -n localmapper python=3.6 -y
+conda create -n localmapper python=3.9 -y
 conda activate localmapper
 pip install localmapper
 ```
@@ -41,7 +43,7 @@ pip install localmapper
 ```
 git clone https://github.com/snu-micc/LocalMapper.git
 cd LocalMapper
-conda create -n localmapper python=3.6 -y
+conda create -n localmapper python=3.9 -y
 conda activate localmapper
 pip install -e .
 ```
