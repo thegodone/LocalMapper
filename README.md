@@ -21,7 +21,7 @@ Shuan Chen (shuan.micc@gmail.com)<br>
 This repository has been tested on both **Linux** and **Windows** operating systems.
 
 ## Python Dependencies
-* Python (version >= 3.9.)
+* Python (version >= 3.9.19)
 * Numpy (version >= 1.26.4)
 * Matplotlib (version >=3.9.1)
 * PyTorch (version >= 2.3.0)
