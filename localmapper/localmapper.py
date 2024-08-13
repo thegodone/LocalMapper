@@ -24,7 +24,7 @@ def get_rdkit_rxn(rxn):
 class localmapper:
     def __init__(self, device='cpu', model_version='202403'):
         self.device = torch.device(device) if torch.cuda.is_available() else torch.device('cpu')
-        print ('Loaded LocalMapper (version=%s) at device %s' % (model_version, self.device))
+        #print ('Loaded LocalMapper (version=%s) at device %s' % (model_version, self.device))
     
         config_path = resource_filename('localmapper', 'data/default_config.json')
         template_path = resource_filename('localmapper', 'data/templates_%s.pkl' % model_version)
