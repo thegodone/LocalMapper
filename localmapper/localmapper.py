@@ -13,7 +13,7 @@ from .mapper import AtomMapper, prediction2map
 
 def get_rdkit_rxn(rxn):
     def demap(smi):
-        mol = Chem.MolFromSmiles(smi)
+        mol = Chem.MolFromSmiles(smi,sanitize=False)
         [atom.SetAtomMapNum(0) for atom in mol.GetAtoms()]
         return Chem.MolToSmiles(mol)
     reactant, product = rxn.split('>>')
