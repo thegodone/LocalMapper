@@ -56,8 +56,14 @@ class AtomMapper:
         
 
     def mask_prediction(self):
+        
         self.reactant_mol, self.product_mol = Chem.MolFromSmiles(self.reactant), Chem.MolFromSmiles(self.product)
-        self.patoms, self.ratoms = Chem.MolFromSmiles(self.product).GetAtoms(),  Chem.MolFromSmiles(self.reactant).GetAtoms()
+        if self.reactant_mol is None or  self.product_mol is None:
+            self.reactant = 'CO'
+            self.product = 'CN'
+            self.reactant_mol, self.product_mol = Chem.MolFromSmiles(self.reactant), Chem.MolFromSmiles(self.product)
+
+        self.patoms, self.ratoms = self.product_mol.GetAtoms(),  self.reactant_mol.GetAtoms()
         self.n_patoms, self.n_ratoms = len(self.patoms), len(self.ratoms)
         psymbols, rsymbols = [atom.GetSymbol() for atom in self.patoms], [atom.GetSymbol() for atom in self.ratoms]
         self.atom_mask = np.array([[rsymbol == psymbol for rsymbol in rsymbols] for psymbol in psymbols]).astype(int)
