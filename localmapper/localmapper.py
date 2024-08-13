@@ -11,11 +11,12 @@ from rdkit.Chem import Draw
 from .utils import *
 from .mapper import AtomMapper, prediction2map
 
-def get_rdkit_rxn(rxn):
-    def demap(smi):
+def demap(smi):
         mol = Chem.MolFromSmiles(smi,sanitize=False)
         [atom.SetAtomMapNum(0) for atom in mol.GetAtoms()]
         return Chem.MolToSmiles(mol)
+    
+def get_rdkit_rxn(rxn):
     reactant, product = rxn.split('>>')
     rxn = demap(reactant) + '>>' + demap(product)
     rdkit_rxn = Chem.rdChemReactions.ReactionFromSmarts(rxn, useSmiles=True)
@@ -41,6 +42,8 @@ class localmapper:
         rgraphs, pgraphs = [], []
         for rxn in rxns:
             reactant, product = rxn.split('>>')
+            reactant = demap(reactant)
+            product = demap(product)
             reactant, product = Chem.MolFromSmiles(reactant), Chem.MolFromSmiles(product)
             if reactant is None or product is None:
                 reactant =  Chem.MolFromSmiles('CO')
