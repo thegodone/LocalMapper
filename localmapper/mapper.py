@@ -15,8 +15,8 @@ def prediction2map(rxn, prediction, neighbor_weight=10):
     p = Chem.MolFromSmiles(product)
     r = Chem.MolFromSmiles(reactant)
     if p is None or r is None:
-        product = 'CN'
         reactant = 'CO'
+        product = 'CN'
     
     product_mapping = {atom.GetIdx(): atom.GetAtomMapNum() for atom in Chem.MolFromSmiles(product).GetAtoms()}
     if 0 in product_mapping.values():
