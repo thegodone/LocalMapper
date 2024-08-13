@@ -42,6 +42,9 @@ class localmapper:
         for rxn in rxns:
             reactant, product = rxn.split('>>')
             reactant, product = Chem.MolFromSmiles(reactant), Chem.MolFromSmiles(product)
+            if reactant is None or product is None:
+                reactant =  Chem.MolFromSmiles('CO')
+                product =  Chem.MolFromSmiles('CN')
             rgraph, pgraph = self.graph_function(reactant), self.graph_function(product)
             rgraphs.append(rgraph)
             pgraphs.append(pgraph)
