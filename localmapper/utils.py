@@ -27,7 +27,7 @@ atom_types = ['C', 'N', 'O', 'S', 'F', 'Si', 'P', 'Cl', 'Br', 'Mg', 'Na', 'Ca', 
 
 def clean_reactant_map(rxn):
     r, p = rxn.split('>>')
-    r_mol = Chem.MolFromSmiles(r)
+    r_mol = Chem.MolFromSmiles(r, 0, false)
     [atom.SetAtomMapNum(0) for atom in r_mol.GetAtoms()]
     r = Chem.MolToSmiles(r_mol, canonical = False)
     return '>>'.join([r, p])
