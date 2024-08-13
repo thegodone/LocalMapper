@@ -12,6 +12,12 @@ from .LocalTemplate.template_extractor import extract_from_reaction
     
 def prediction2map(rxn, prediction, neighbor_weight=10):
     reactant, product = rxn.split('>>')
+    p = Chem.MolFromSmiles(product)
+    r = Chem.MolFromSmiles(reactant)
+    if p is None or r is None:
+        product = 'CN'
+        reactant = 'CO'
+    
     product_mapping = {atom.GetIdx(): atom.GetAtomMapNum() for atom in Chem.MolFromSmiles(product).GetAtoms()}
     if 0 in product_mapping.values():
         product_mapping = {atom.GetIdx(): atom.GetIdx()+1 for atom in Chem.MolFromSmiles(product).GetAtoms()}
