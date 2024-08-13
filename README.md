@@ -31,6 +31,16 @@ This repository has been tested on both **Linux** and **Windows** operating syst
 * DGLLife (version >= 0.3.2)
 * pydantic (version >=2.8.2)
 * scikit-learn (version >=1.5.1)
+
+For linux 
+```
+conda create -n localmapper python=3.9 -y
+conda activate localmapper
+conda install pytorch==2.3.0 pytorch-cuda=12.1 -c pytorch -c nvidia
+conda install -c dglteam/label/th23_cu121 dgl
+pip install rdkit
+pip install -e .
+```
   
 ## Installation Guide
 ### From pip
