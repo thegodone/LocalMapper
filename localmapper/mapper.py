@@ -167,5 +167,7 @@ class AtomMapper:
         self.mapped_product = copy.copy(self.product_mol)
         [atom.SetAtomMapNum(reactant_mapping[atom.GetIdx()]) if atom.GetIdx() in reactant_mapping else atom.SetAtomMapNum(0) for atom in self.mapped_reactant.GetAtoms()]
         [atom.SetAtomMapNum(product_mapping[atom.GetIdx()])  if atom.GetIdx() in product_mapping else atom.SetAtomMapNum(0) for atom in self.mapped_product.GetAtoms()]
-        
-        return '>>'.join(Chem.MolToSmiles(smiles, canonical = False) for smiles in [self.mapped_reactant, self.mapped_product])
+        try:
+            return '>>'.join(Chem.MolToSmiles(smiles, canonical = False) for smiles in [self.mapped_reactant, self.mapped_product])
+        except:
+            return None
